@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
-            <div class="card-header">QUẢN LÝ TUYỂN SINH</div>
+            <div class="card-header">BÀI 1: QUẢN LÝ TUYỂN SINH</div>
             <div class="card-body">
               <div class="form-group">
                 <div>
@@ -136,6 +136,42 @@
       </div>
     </div>
     <hr />
+    <!-- BÀI 2: TÍNH TIỀN ĐIỆN -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">BÀI 2: TÍNH TIỀN ĐIỆN</div>
+            <div class="card-body">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="">NHẬP TÊN NGƯỜI DÙNG</label>
+                  <input
+                    type="text"
+                    id="tenNguoiDung"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">NHẬP SỐ KW ĐIỆN TIÊU THỤ</label>
+                  <input
+                    type="text"
+                    id="soKwTieuThu"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <button class="btn btn-success" id="btnTinhTienDien" onclick="tinhTienDien()">
+                  TÍNH TIỀN ĐIỆN
+                </button>
+              </div>
+            </div>
+            <div class="card-footer" id="footerTinhTienDien"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>

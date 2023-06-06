@@ -1,5 +1,6 @@
 /**
- * MÔ HÌNH 3 KHỐI BÀI 1: QUẢN LÝ TUYỂN SINH
+ * BÀI 1: QUẢN LÝ TUYỂN SINH
+ * MÔ HÌNH 3 KHỐI 
  * ĐẦU VÀO:
  * -ĐIỂM CHUẨN HỘI ĐỒNG
  * -ĐIỂM MÔN THI 1, ĐIỂM MÔN THI 2, ĐIỂM MÔN THI 3
@@ -84,4 +85,64 @@ function xemKetQuaThi() {
     var result2 = "BẠN ĐÃ RỚT, TỔNG SỐ ĐIỂM ĐẠT ĐƯỢC LÀ: " + diemTongKet;
     getEle("footerKetQuaThi").innerHTML = result2;
   }
+}
+
+/**
+ * BÀI 2: TÍNH TIỀN ĐIỆN
+ * MÔ HÌNH 3 KHỐI
+ * ĐẦU VÀO:
+ * -TÊN NGƯỜI DÙNG
+ * -SoKwTieuThu
+ * XỬ LÝ:
+ * -khai báo biến tienDien
+ * - Nếu 0 < SoKwTieuThu <= 50 --> tienDien = SoKwTieuThu * 500
+ * - Nếu 50 < SoKwTieuThu <= 100 --> tienDien = (50*500) + (SoKwTieuThu - 50) * 650
+ * - Nếu 100 < SoKwTieuThu <= 200 --> tienDien = (50*500) + (50*650) + (SoKwTieuThu - 100) * 850
+ * - Nếu 200 < SoKwTieuThu <= 350 --> tienDien = (50*500) + (50*650) + (100 * 850) + (SoKwTieuThu - 200) * 1100
+ * - Nếu 350 < SoKwTieuThu --> tienDien = (50*500) + (50*650) + (100 * 850) + (150 * 1100) + (SoKwTieuThu - 350) * 1300
+ * ĐẦU RA:
+ * -IN RA TÊN NGƯỜI DÙNG
+ * -IN RA SỐ TIỀN ĐIỆN
+ */
+function getEle2(id){
+    return document.getElementById(id);
+}
+function tinhTienDien(){
+    var tenNguoiDung = getEle2('tenNguoiDung').value;
+    var soKwTieuThu = getEle2('soKwTieuThu').value*1;
+    var tienDien = 0;
+    if(0 < soKwTieuThu && soKwTieuThu <= 50){
+        tienDien = soKwTieuThu * 500;
+        var content = '';
+        var numberFormat = new Intl.NumberFormat("VN-vn")
+        content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
+        content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
+        getEle2('footerTinhTienDien').innerHTML = content;
+    }else if(50 < soKwTieuThu && soKwTieuThu <= 100){
+        tienDien = (50 * 500) + (soKwTieuThu - 50) * 650;
+        var content = '';
+    }else if(100 < soKwTieuThu && soKwTieuThu <= 200){
+        tienDien = (50 * 500) + (50 * 650) + (soKwTieuThu - 100) * 850;
+        var content = '';
+        var numberFormat = new Intl.NumberFormat("VN-vn")
+        content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
+        content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
+        getEle2('footerTinhTienDien').innerHTML = content;
+
+    }else if(200 < soKwTieuThu && soKwTieuThu <= 350){
+        tienDien = (50 * 500) + (50 * 650) + (100 * 850) + (soKwTieuThu - 200) * 1100;
+        var content = '';
+        var numberFormat = new Intl.NumberFormat("VN-vn")
+        content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
+        content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
+        getEle2('footerTinhTienDien').innerHTML = content;
+    }else if(350 < soKwTieuThu){
+        tienDien = (50 * 500) + (50 * 650) + (100 * 850) + (150 * 1100) + (soKwTieuThu - 350) * 1300;
+        var content = '';
+        var numberFormat = new Intl.NumberFormat("VN-vn")
+        content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
+        content += '<p>Số Tiền Điện Cần Thanh Toán Là: '+ numberFormat.format(tienDien) +' vnd</p>';
+        getEle2('footerTinhTienDien').innerHTML = content;
+    }
+    
 }
