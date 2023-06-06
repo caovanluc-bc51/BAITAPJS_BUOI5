@@ -111,38 +111,103 @@ function tinhTienDien(){
     var tenNguoiDung = getEle2('tenNguoiDung').value;
     var soKwTieuThu = getEle2('soKwTieuThu').value*1;
     var tienDien = 0;
+    var content = '';
+    var numberFormat = new Intl.NumberFormat("VN-vn")
     if(0 < soKwTieuThu && soKwTieuThu <= 50){
         tienDien = soKwTieuThu * 500;
-        var content = '';
-        var numberFormat = new Intl.NumberFormat("VN-vn")
         content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
         content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
         getEle2('footerTinhTienDien').innerHTML = content;
     }else if(50 < soKwTieuThu && soKwTieuThu <= 100){
         tienDien = (50 * 500) + (soKwTieuThu - 50) * 650;
-        var content = '';
-    }else if(100 < soKwTieuThu && soKwTieuThu <= 200){
-        tienDien = (50 * 500) + (50 * 650) + (soKwTieuThu - 100) * 850;
-        var content = '';
-        var numberFormat = new Intl.NumberFormat("VN-vn")
         content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
         content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
         getEle2('footerTinhTienDien').innerHTML = content;
-
+    }else if(100 < soKwTieuThu && soKwTieuThu <= 200){
+        tienDien = (50 * 500) + (50 * 650) + (soKwTieuThu - 100) * 850;
+        content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
+        content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
+        getEle2('footerTinhTienDien').innerHTML = content;
     }else if(200 < soKwTieuThu && soKwTieuThu <= 350){
         tienDien = (50 * 500) + (50 * 650) + (100 * 850) + (soKwTieuThu - 200) * 1100;
-        var content = '';
-        var numberFormat = new Intl.NumberFormat("VN-vn")
         content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
         content += '<p>Số tiền điện cần thanh toán là: '+ numberFormat.format(tienDien) +' vnd</p>';
         getEle2('footerTinhTienDien').innerHTML = content;
     }else if(350 < soKwTieuThu){
         tienDien = (50 * 500) + (50 * 650) + (100 * 850) + (150 * 1100) + (soKwTieuThu - 350) * 1300;
-        var content = '';
-        var numberFormat = new Intl.NumberFormat("VN-vn")
         content += '<p>Tên Người Dùng: '+ tenNguoiDung +'</p>';
         content += '<p>Số Tiền Điện Cần Thanh Toán Là: '+ numberFormat.format(tienDien) +' vnd</p>';
         getEle2('footerTinhTienDien').innerHTML = content;
     }
     
+}
+/**
+ * BÀI 3: TÍNH THUẾ THU NHẬP CÁ NHÂN
+ * MÔ HÌNH 3 KHỐI
+ * ĐẦU VÀO:
+ * -hoVaTen
+ * -tongThuNhapNam
+ * -soNguoiPhuThuoc
+ * XỬ LÝ:
+ * -thuNhapChiuThue = tongThuNhapNam - 4tr - soNguoiPhuThuoc * 1.6tr
+ * - Nếu 0 < thuNhapChiuThue && thuNhapChiuThue <= 60tr --> thueThuNhapCaNhan = thuNhapChiuThue * 5 / 100
+ * - Nếu 60tr < thuNhapChiuThue && thuNhapChiuThue <= 120tr --> thueThuNhapCaNhan = (60tr * 5 / 100) + (thuNhapChiuThue - 60tr) * 10 / 100 
+ * - Nếu 120tr < thuNhapChiuThue && thuNhapChiuThue <= 210tr --> thueThuNhapCaNhan = (60tr * 5 / 100) + (120tr * 10 / 100) + (thuNhapChiuThue - 120tr) * 15 / 100
+ * - Nếu 210 < thuNhapChiuThue && thuNhapChiuThue <= 384tr --> thueThuNhapCaNhan = (60tr * 5 / 100) + (120tr * 10 / 100) + (210 * 15 / 100) + (thuNhapChiuThue - 210) * 20 / 100
+ * - Nếu 384tr < thuNhapChiuThue && thuNhapChiuThue <= 624tr --> thueThuNhapCaNhan = (60tr * 5 / 100) + (120tr * 10 / 100) + (210 * 15 / 100) + (384tr * 20 /100) + (thuNhapChiuThue - 384tr) * 25 / 100
+ * - Nếu 624tr < thuNhapChiuThue && thuNhapChiuThue <= 960tr --> thueThuNhapCaNhan = (60tr * 5 / 100) + (120tr * 10 / 100) + (210 * 15 / 100) + (384tr * 20 /100) + (624tr * 25 /100) + (thuNhapChiuThue - 624tr) * 30 / 100
+ * - Nếu 960tr < thuNhapChiuThue --> thueThuNhapCaNhan = (60tr * 5 / 100) + (120tr * 10 / 100) + (210 * 15 / 100) + (384tr * 20 /100) + (624tr * 25 /100) + (960tr * 30 / 100) + (thuNhapChiuThue - 960tr) * 35 / 100
+ * ĐẦU RA:
+ * - IN RA HỌ VÀ TÊN
+ * - IN RA SỐ TIỀN THUẾ THU NHẬP CÁ NHÂN PHẢI TRẢ
+ */
+
+function getEle3(id){
+    return document.getElementById(id);
+}
+function tinhTienThue(){
+    var hoVaTen = getEle3('hoVaTen').value;
+    var tongThuNhapNam = getEle3('tongThuNhapNam').value*1;
+    var soNguoiPhuThuoc = getEle3('soNguoiPhuThuoc').value*1;
+    var thuNhapChiuThue = 0;
+    var thueThuNhapCaNhan = 0;
+    var content2 = '';
+    var numberFormat2 = new Intl.NumberFormat("VN-vn");
+    thuNhapChiuThue = tongThuNhapNam - 4000000 - soNguoiPhuThuoc * 1600000;
+    if(0 < thuNhapChiuThue && thuNhapChiuThue <= 60000000){
+        thueThuNhapCaNhan = thuNhapChiuThue * 5 / 100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(60000000 < thuNhapChiuThue && thuNhapChiuThue <= 120000000){
+        thueThuNhapCaNhan =(60000000*5/100) + (thuNhapChiuThue - 60000000)*10/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(120000000 < thuNhapChiuThue && thuNhapChiuThue <= 210000000){
+        thueThuNhapCaNhan = (60000000*5/100) + (60000000*10/100) + (thuNhapChiuThue-120000000)*15/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(210000000<thuNhapChiuThue && thuNhapChiuThue<=384000000){
+        thueThuNhapCaNhan = (60000000*5/100) + (60000000*10/100) + (90000000*15/100) + (thuNhapChiuThue-210000000)*20/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(384000000<thuNhapChiuThue && thuNhapChiuThue<=624000000){
+        thueThuNhapCaNhan = (60000000*5/100) + (60000000*10/100) + (90000000*15/100) + (174000000*20/100) + (thuNhapChiuThue-384000000)*25/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(624000000<thuNhapChiuThue && thuNhapChiuThue<=960000000){
+        thueThuNhapCaNhan = (60000000*5/100) + (60000000*10/100) + (90000000*15/100) + (174000000*20/100) + (240000000*25/100) + (thuNhapChiuThue-624000000)*30/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }else if(960000000<thuNhapChiuThue){
+        thueThuNhapCaNhan = (60000000*5/100) + (60000000*10/100) + (90000000*15/100) + (174000000*20/100) + (240000000*25/100) + (336000000*30/100) + (thuNhapChiuThue-960000000)*35/100;
+        content2 += '<p>Họ Và Tên: '+ hoVaTen +'</p>';
+        content2 += '<p>Số Tiền Thuế Thu Nhập Cá Nhân Là: '+ numberFormat2.format(thueThuNhapCaNhan) +' vnd</p>';
+        getEle3('footerTinhTienThue').innerHTML = content2;
+    }
 }

@@ -172,6 +172,52 @@
         </div>
       </div>
     </div>
+    <hr />
+    <!-- BÀI TẬP 3: TÍNH THUẾ THU NHẬP CÁ NHÂN -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">BÀI 3: TÍNH THUẾ THU NHẬP CÁ NHÂN</div>
+            <div class="card-body">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="">HỌ VÀ TÊN</label>
+                  <input
+                    type="text"
+                    id="hoVaTen"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">TỔNG THU NHẬP NĂM</label>
+                  <input
+                    type="text"
+                    id="tongThuNhapNam"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">SỐ NGƯỜI PHỤ THUỘC</label>
+                  <input
+                    type="text"
+                    id="soNguoiPhuThuoc"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <button class="btn btn-success" id="btnTinhTienThue" onclick="tinhTienThue()">
+                  TIỀN THUẾ THU NHẬP CÁ NHÂN
+                </button>
+              </div>
+            </div>
+            <div class="card-footer" id="footerTinhTienThue"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>
