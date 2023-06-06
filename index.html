@@ -1,16 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-</head>
-<body>
-    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- BÀI 1: QUẢN LÝ TUYỂN SINH -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">QUẢN LÝ TUYỂN SINH</div>
+            <div class="card-body">
+              <div class="form-group">
+                <div>
+                  <label for="">ĐIỂM CHUẨN CỦA HỘI ĐỒNG</label>
+                  <input
+                    type="text"
+                    id="diemChuan"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div>
+                  <label for="">ĐIỂM MÔN THI THỨ 1</label>
+                  <input
+                    type="text"
+                    id="diemMonThu1"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div>
+                  <label for="">ĐIỂM MÔN THI THỨ 2</label>
+                  <input
+                    id="diemMonThu2"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div>
+                  <label for="">ĐIỂM MÔN THI THỨ 3</label>
+                  <input
+                    id="diemMonThu3"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <br />
+                <!-- CHỌN KHU VỰC ƯU TIÊN -->
+                <form>
+                  <label for="">CHỌN KHU VỰC ƯU TIÊN</label>
+                  <ul>
+                    <li class="type">
+                      <input type="radio" name="selector" id="khuVucA" />
+                      <label for="">Khu Vực A</label>
 
+                      <div class="check"></div>
+                    </li>
 
+                    <li class="type">
+                      <input type="radio" name="selector" id="khuVucB" />
+                      <label for="">Khu Vực B</label>
+                      <div class="check"></div>
+                    </li>
+
+                    <li class="type">
+                      <input type="radio" name="selector" id="khuVucC" />
+                      <label for="">Khu Vực C</label>
+                      <div class="check"></div>
+                    </li>
+                    <li class="type">
+                      <input
+                        type="radio"
+                        name="selector"
+                        id="khongKhuVucUuTien"
+                      />
+                      <label for="">Không Khu Vực Ưu Tiên</label>
+                      <div class="check"></div>
+                    </li>
+                  </ul>
+                </form>
+                <!-- CHỌN ĐỐI TƯỢNG ƯU TIÊN -->
+                <form>
+                  <label for="">CHỌN ĐỐI TƯỢNG ƯU TIÊN</label>
+                  <ul>
+                    <li class="type">
+                      <input type="radio" name="selector" id="doiTuong1" />
+                      <label for="">Đối Tượng 1</label>
+                      <div class="check"></div>
+                    </li>
+
+                    <li class="type">
+                      <input type="radio" name="selector" id="doiTuong2" />
+                      <label for="">Đối Tượng 2</label>
+                      <div class="check"></div>
+                    </li>
+
+                    <li class="type">
+                      <input type="radio" name="selector" id="doiTuong3" />
+                      <label for="">Đối Tượng 3</label>
+                      <div class="check"></div>
+                    </li>
+                    <li class="type">
+                      <input
+                        type="radio"
+                        name="selector"
+                        id="khongDoiTuongUuTien"
+                      />
+                      <label for="">Không Đối Tượng Ưu Tiên</label>
+                      <div class="check"></div>
+                    </li>
+                  </ul>
+                </form>
+                <div>
+                  <button
+                    class="btn btn-success"
+                    id="btnXemKetQuaThi"
+                    onclick="xemKetQuaThi()"
+                  >
+                    XEM KẾT QUẢ THI
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer" id="footerKetQuaThi"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>
