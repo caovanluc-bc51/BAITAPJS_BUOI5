@@ -16,13 +16,13 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
-            <div class="card-header">BÀI 1: QUẢN LÝ TUYỂN SINH</div>
+            <div class="card-header bg-warning text-white">BÀI 1: QUẢN LÝ TUYỂN SINH</div>
             <div class="card-body">
               <div class="form-group">
                 <div>
                   <label for="">ĐIỂM CHUẨN CỦA HỘI ĐỒNG</label>
                   <input
-                    type="text"
+                    type="number"
                     id="diemChuan"
                     class="form-control"
                     aria-describedby="helpId"
@@ -31,7 +31,7 @@
                 <div>
                   <label for="">ĐIỂM MÔN THI THỨ 1</label>
                   <input
-                    type="text"
+                    type="number"
                     id="diemMonThu1"
                     class="form-control"
                     aria-describedby="helpId"
@@ -40,6 +40,7 @@
                 <div>
                   <label for="">ĐIỂM MÔN THI THỨ 2</label>
                   <input
+                    type="number"
                     id="diemMonThu2"
                     class="form-control"
                     aria-describedby="helpId"
@@ -48,6 +49,7 @@
                 <div>
                   <label for="">ĐIỂM MÔN THI THỨ 3</label>
                   <input
+                  type="number"
                     id="diemMonThu3"
                     class="form-control"
                     aria-describedby="helpId"
@@ -76,15 +78,6 @@
                       <label for="">Khu Vực C</label>
                       <div class="check"></div>
                     </li>
-                    <li class="type">
-                      <input
-                        type="radio"
-                        name="selector"
-                        id="khongKhuVucUuTien"
-                      />
-                      <label for="">Không Khu Vực Ưu Tiên</label>
-                      <div class="check"></div>
-                    </li>
                   </ul>
                 </form>
                 <!-- CHỌN ĐỐI TƯỢNG ƯU TIÊN -->
@@ -106,15 +99,6 @@
                     <li class="type">
                       <input type="radio" name="selector" id="doiTuong3" />
                       <label for="">Đối Tượng 3</label>
-                      <div class="check"></div>
-                    </li>
-                    <li class="type">
-                      <input
-                        type="radio"
-                        name="selector"
-                        id="khongDoiTuongUuTien"
-                      />
-                      <label for="">Không Đối Tượng Ưu Tiên</label>
                       <div class="check"></div>
                     </li>
                   </ul>
@@ -141,7 +125,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
-            <div class="card-header">BÀI 2: TÍNH TIỀN ĐIỆN</div>
+            <div class="card-header bg-primary text-white">BÀI 2: TÍNH TIỀN ĐIỆN</div>
             <div class="card-body">
               <div class="form-group">
                 <div class="form-group">
@@ -156,13 +140,17 @@
                 <div class="form-group">
                   <label for="">NHẬP SỐ KW ĐIỆN TIÊU THỤ</label>
                   <input
-                    type="text"
+                    type="number"
                     id="soKwTieuThu"
                     class="form-control"
                     aria-describedby="helpId"
                   />
                 </div>
-                <button class="btn btn-success" id="btnTinhTienDien" onclick="tinhTienDien()">
+                <button
+                  class="btn btn-success"
+                  id="btnTinhTienDien"
+                  onclick="tinhTienDien()"
+                >
                   TÍNH TIỀN ĐIỆN
                 </button>
               </div>
@@ -178,7 +166,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="card">
-            <div class="card-header">BÀI 3: TÍNH THUẾ THU NHẬP CÁ NHÂN</div>
+            <div class="card-header bg-info text-white">BÀI 3: TÍNH THUẾ THU NHẬP CÁ NHÂN</div>
             <div class="card-body">
               <div class="form-group">
                 <div class="form-group">
@@ -193,7 +181,7 @@
                 <div class="form-group">
                   <label for="">TỔNG THU NHẬP NĂM</label>
                   <input
-                    type="text"
+                    type="number"
                     id="tongThuNhapNam"
                     class="form-control"
                     aria-describedby="helpId"
@@ -202,18 +190,78 @@
                 <div class="form-group">
                   <label for="">SỐ NGƯỜI PHỤ THUỘC</label>
                   <input
-                    type="text"
+                    type="number"
                     id="soNguoiPhuThuoc"
                     class="form-control"
                     aria-describedby="helpId"
                   />
                 </div>
-                <button class="btn btn-success" id="btnTinhTienThue" onclick="tinhTienThue()">
+                <button
+                  class="btn btn-success"
+                  id="btnTinhTienThue"
+                  onclick="tinhTienThue()"
+                >
                   TIỀN THUẾ THU NHẬP CÁ NHÂN
                 </button>
               </div>
             </div>
             <div class="card-footer" id="footerTinhTienThue"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- BÀI 4: TÍNH TIỀN CÁP -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header bg-danger text-white">BÀI 4: TÍNH TIỀN CÁP</div>
+            <div class="card-body">
+              <div class="form-group">
+                <select id="mySelect" onchange="layLoaiKhachHang()">
+                  <option value="chonLoaiKhachHang">CHỌN LOẠI KHÁCH HÀNG</option>
+                  <option value="nguoiDan">NGƯỜI DÂN</option>
+                  <option value="doanhNghiep">DOANH NGHIỆP</option>
+                </select>
+                <br>
+                <br>
+                <div class="form-group" id="formSoKetNoi">
+                  <label for="">SỐ KẾT NỐI</label>
+                  <input
+                    type="number" id="soKetNoi"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">NHẬP MÃ KHÁCH HÀNG</label>
+                  <input
+                    type="text"
+                    id="maKhachHang"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">SỐ KÊNH CAO CẤP</label>
+                  <input
+                    type="number"
+                    id="soKenhCaoCap"
+                    class="form-control"
+                    aria-describedby="helpId"
+                  />
+                </div>
+                <button
+                  class="btn btn-success"
+                  id="btnTinhTienCap"
+                  onclick="tinhTienCap()"
+                >
+                  TÍNH TIỀN CÁP
+                </button>
+              </div>
+            </div>
+            <div class="card-footer" id="footerTinhTienCap"></div>
           </div>
         </div>
       </div>
